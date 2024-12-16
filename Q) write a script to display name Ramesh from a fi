@@ -1,0 +1,203 @@
+Q) write a script to display name Ramesh from a file.
+
+A) #1/bin/bash
+
+echo "Write the filename which you want to search"
+read filename
+
+echo "Write the String which you want to search"
+read string
+
+if [ $(grep -c "$string" $filename) -gt 0 ]
+then
+        echo "$(grep -i 'kedhar' $filename)"
+fi
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Display the file name and file permission using script.
+
+A) #!/bin/bash
+
+echo "The name of the file is $0"
+
+name=$(ls -lrt $0 |awk -F " " '{print $1}')
+echo "$name"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Product multiplaication and Addition.
+A) #!/bin/bash
+
+echo "Enter the first number:"
+read num1
+
+echo "Enter the second number:"
+read num2
+
+add=`expr $num1 + $num2 `
+mul=`expr $num1 \* $num2 `
+
+echo "The Sum of mentioned numbers are $add"
+echo "The multiplaication of the mentioned numbers are $mul"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) How to cut first 3 characters in the file for all the lines.
+A) #!/bin/bash
+
+
+echo "Please enter the file name whihc you want to show first 3 characters"
+read file
+
+echo "$(cat $file| cut -c 1-3)"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Write a program to reverse a string.
+
+A) #!/bin/bash
+
+echo "Enter the String which you want to reverse"
+read string
+
+val=$(echo "$string" | rev)
+
+echo "$val"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Print one after 1 second, 2 after 2 second, 3 after 3 second etc
+
+A) #!/bin/bash
+
+echo "Enter how many values you want to display"
+read n
+val=1
+
+while [ $val -le $n ]
+do
+  echo "$val"
+  sleep $val
+  val=`expr $val + 1`
+done
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Sum of n numbers.
+
+A) #!/bin/bash
+
+echo "Enter the value of n"
+read n
+val=1
+sum=0
+
+while [ $val -le $n ]
+do
+     sum=`expr $val + $sum `
+     val=`expr $val + 1 `
+done
+
+echo "The suma of $n is: $sum"
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Sum of n odd numbers
+
+A) #!/bin/bash
+
+echo "Enter the value of n"
+read n
+val=1
+sum=0
+
+while [ $val -le $n ]
+do
+     sum=`expr $val + $sum `
+     val=`expr $val + 2 `
+done
+
+echo "The suma of $n is: $sum"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) display files which are created n numbers of days ago, 
+
+A) #!/bin/bash
+
+echo "Enter the number of days ago which you want to see"
+read n
+
+echo "$(find . -type f -mtime -$n)"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Q) To check whether the service is running or not and then if it is not active then start it.
+
+A) #!/bin/bash
+
+num=0
+
+echo "Enter the service which you want to serch"
+read service
+
+if [ $(ps -ef | grep -ic "$service") != 0 ]
+then
+        echo "The mentioned service is running"
+else
+        echo "The mentioned service is not running"
+         $(systemctl start $service)
+fi
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q) Write a script for a Calculator
+
+A) 
+#!/bin/bash
+
+echo "Enter the two numbersone by one"
+read n1
+read n2
+
+echo "Enter the choice of operation which you want to execute"
+echo -e "1.Addition \n2.Subraaction \n3.Multiplication \n4.Division"
+
+read value
+
+if [ "$value" == "Addition" ]
+then
+        new=`expr $n1 + $n2 `
+
+elif [ "$value" == "Subraaction" ]
+then
+         new=`expr $n1 - $n2 `
+
+elif [ "$value" == "Multiplication" ]
+then
+         new=`expr $n1 \* $n2 `
+
+elif [ "$value" == "Division" ]
+then
+         new=`expr $n1 / $n2 `
+else
+        echo "Please check the value you entered"
+fi
+
+echo "Tne $value for $n1 and $n2 is $new"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
